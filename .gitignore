@@ -1,2 +1,4 @@
 /.idea
 /kubernetes-replicator
+*.lock
+*.tgz
