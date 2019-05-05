@@ -27,7 +27,7 @@ clean:
 
 release: clean
 	sed -i -e "s/version:.*/version: $(VERSION)/" Chart.yaml
-	sed -i -e "s/tag: 0.0.0/tag: $(VERSION)/" values.yaml
+	sed -i -e "s/tag: stable/tag: $(VERSION)/" values.yaml
 	helm dep build
 	helm lint
 	helm template .
