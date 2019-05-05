@@ -1,0 +1,5 @@
+---
+dependencies:
+- name: "kubernetes-replicator"
+  alias: "replicator"
+  repository: file://../../deploy/helm-chart/kubernetes-replicator
