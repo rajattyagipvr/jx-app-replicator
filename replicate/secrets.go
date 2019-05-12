@@ -113,13 +113,14 @@ func (r *secretReplicator) replicateSecret(secret *v1.Secret, sourceSecret *v1.S
 		return err
 	}
 
-	targetVersion, ok := secret.Annotations[ReplicatedFromVersionAnnotation]
-	sourceVersion := sourceSecret.ResourceVersion
+	// let's always overwrite the secret as it could have been manually updated
+	// targetVersion, ok := secret.Annotations[ReplicatedFromVersionAnnotation]
+	// sourceVersion := sourceSecret.ResourceVersion
 
-	if ok && targetVersion == sourceVersion {
-		log.Printf("secret %s/%s is already up-to-date", secret.Namespace, secret.Name)
-		return nil
-	}
+	// if ok && targetVersion == sourceVersion {
+	// 	log.Printf("secret %s/%s is already up-to-date", secret.Namespace, secret.Name)
+	// 	return nil
+	// }
 
 	secretCopy := secret.DeepCopy()
 
