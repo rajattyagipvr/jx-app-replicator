@@ -6,6 +6,8 @@ CHARTMUSEUM_CREDS_USR := $(shell cat /builder/home/basic-auth-user)
 CHARTMUSEUM_CREDS_PSW := $(shell cat /builder/home/basic-auth-pass)
 
 build: clean
+	sed -i -e "s/version:.*/version: $(VERSION)/" Chart.yaml
+	echo "  version: $(VERSION)" >> requirements.yaml
 	helm dep build
 	helm lint
 

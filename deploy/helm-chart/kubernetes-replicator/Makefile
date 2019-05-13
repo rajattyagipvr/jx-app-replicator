@@ -7,6 +7,8 @@ CHARTMUSEUM_CREDS_PSW := $(shell cat /builder/home/basic-auth-pass)
 
 build: clean
 	rm -rf requirements.lock
+	sed -i -e "s/version:.*/version: $(VERSION)/" Chart.yaml
+	sed -i -e "s/tag: 0.0.0/tag: $(VERSION)/" values.yaml
 	helm dep build
 	helm lint
 	helm template .
