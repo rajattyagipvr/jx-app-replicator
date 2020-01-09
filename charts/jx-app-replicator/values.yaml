@@ -4,7 +4,7 @@
 
 image:
   jxImageRepo: gcr.io/jenkinsxio/replicator
-  tag: stable
+  tag: 1.0.16
   pullPolicy: IfNotPresent
 
 nameOverride: ""
