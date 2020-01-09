@@ -52,13 +52,6 @@ pipelineConfig:
                 - --context=/workspace/source
                 - --cache-dir=/workspace
 
-              - name: test-charts
-                image: gcr.io/jenkinsxio/builder-go:0.1.332
-                command: make
-                args:
-                - build
-                dir: /workspace/source/deploy/helm-chart/kubernetes-replicator
-
               - name: helm-lint
                 image: gcr.io/jenkinsxio/builder-go:0.1.332
                 command: make
@@ -151,13 +144,6 @@ pipelineConfig:
                 - --destination=gcr.io/jenkinsxio/replicator:${inputs.params.version}
                 - --context=/workspace/source
                 - --cache-dir=/workspace
-
-              - name: release-chart
-                image: gcr.io/jenkinsxio/builder-go:0.1.332
-                command: make
-                args:
-                - release
-                dir: /workspace/source/deploy/helm-chart/kubernetes-replicator
 
               - name: release-app
                 image: gcr.io/jenkinsxio/builder-go:0.1.332
